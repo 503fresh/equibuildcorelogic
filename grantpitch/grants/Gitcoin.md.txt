@@ -1,0 +1,12 @@
+# POET: Proof of Equity Token – Gitcoin Pitch
+
+## What it Does
+POET turns work into value. Each NFT holds proof of contribution, milestone data, and access logic for future equity.
+
+## Why It Matters
+It formalizes "you did the work" into something provable and on-chain. For DAOs, grants, and open-source teams.
+
+## What We're Asking
+- $25,000 for 6-week rollout
+- Mainnet deployment
+- Integration with Gitcoin milestone flows

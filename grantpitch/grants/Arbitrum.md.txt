@@ -1,0 +1,13 @@
+
+
+# POET on Arbitrum – Contribution + Equity Protocol
+
+## Why Arbitrum
+Built for DAOs, POET supports tokenized equity via NFTs with burn, milestone, and appeal logic.
+
+## What We Want
+- $25,000 to deploy POET on Arbitrum
+- Run pilots with Arbitrum-native DAOs
+
+## How It Helps
+Makes contributor proof portable, enforceable, and interoperable across Arbitrum’s ecosystem.

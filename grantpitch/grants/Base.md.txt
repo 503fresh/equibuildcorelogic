@@ -1,0 +1,12 @@
+# POET: Base Layer Launch
+
+## Mission
+POET turns every NFT into an equity-backed contributor record. Base gives us the scalability to make that universal.
+
+## Grant Goal
+- $25,000 to bring POET to Base
+- EAS-compatible structure
+- Milestone-linked identity layer
+
+## Impact
+Work gets verified. Contributions become capital. DAOs gain frictionless trust.

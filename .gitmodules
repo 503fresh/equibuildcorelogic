@@ -1,0 +1,6 @@
+[submodule "equibuildcorelogic/lib/forge-std"]
+	path = equibuildcorelogic/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "equibuildcorelogic/lib/openzeppelin-contracts"]
+	path = equibuildcorelogic/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts

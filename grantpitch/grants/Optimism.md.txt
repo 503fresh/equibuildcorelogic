@@ -1,0 +1,12 @@
+
+# POET for Optimism – RetroPGF Alignment
+
+## Use Case
+Retroactive public goods need proof of who did what. POET attaches that proof to each contributor, permanently.
+
+## Funding Request
+- $25,000 to deploy and run 3 DAO pilots on Optimism
+- Integration with RetroPGF workflows
+
+## Outcome
+Portable, milestone-aware tokens that sync with Optimism’s public goods ethos.
