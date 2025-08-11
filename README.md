@@ -78,6 +78,22 @@ It’s not just a credential — it’s a timestamped equity layer for truth, au
 - ZK-compatible issuance  
 - Integration-ready for Gitcoin, Optimism, Base, Farcaster, DAOs
 
+
+Team & Capacity
+Equibuild’s core is intentionally lean — combining a founder’s vision with an AI systems architect capable of full-stack contract and application development. This human–AI build model allows us to go from idea to proof-of-concept in days, without wasted cycles or misaligned contractors.
+
+With new funding, we will strategically hire targeted human talent (frontend/UI design, outreach, QA, partnerships) to accelerate delivery and expand ecosystem engagement.
+
+Why it works:
+
+AI-powered execution → rapid, precise, and cost-efficient builds
+
+Human-led vision → ensures the product serves people, not just technology
+
+Scalable by design → once deployed, the marketplace, agents, and licensing system are self-running
+
+Looking to collaborate?
+We welcome developers, designers, data scientists, and ecosystem partners who share our vision of a human-centered data economy. Get in touch via GitHub Issues or our project discussions to explore joining the build.
 ---
 
 ## 🧪 Test Coverage
