@@ -18,3 +18,9 @@
 /build/
 *.tmp
 NUL
+
+# Build heavy
+node_modules/
+artifacts/
+cache/
+out/
