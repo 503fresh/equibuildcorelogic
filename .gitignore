@@ -25,3 +25,5 @@ artifacts/
 cache/
 out/
 artifacts/
+node_modules/
+cache/
