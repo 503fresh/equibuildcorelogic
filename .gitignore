@@ -1,0 +1,11 @@
+.env
+.env
+.env
+
+# Arduino
+*.hex
+*.elf
+*.bin
+*.o
+/build/
+*.tmp
