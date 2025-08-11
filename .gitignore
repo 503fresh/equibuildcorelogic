@@ -9,3 +9,12 @@
 *.o
 /build/
 *.tmp
+
+# Arduino
+*.hex
+*.elf
+*.bin
+*.o
+/build/
+*.tmp
+NUL
