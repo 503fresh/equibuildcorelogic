@@ -1,29 +1,9 @@
+﻿node_modules/
+hh-artifacts/
+hh-cache/
+evidence/
 .env
-.env
-.env
-
-# Arduino
-*.hex
-*.elf
-*.bin
-*.o
-/build/
+.env.*
+*.log
 *.tmp
-
-# Arduino
-*.hex
-*.elf
-*.bin
-*.o
-/build/
-*.tmp
-NUL
-
-# Build heavy
-node_modules/
-artifacts/
-cache/
-out/
-artifacts/
-node_modules/
-cache/
+*.cache
