@@ -1,0 +1,105 @@
+﻿name: Apply File
+on:
+  repository_dispatch:
+    types: [apply-file]
+  workflow_dispatch:
+    inputs:
+      path:
+        description: Repo path to write
+        required: true
+        type: string
+      content_b64:
+        description: Base64 content
+        required: true
+        type: string
+      message:
+        description: Commit message
+        required: true
+        type: string
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: New branch
+        id: br
+        run: echo "val=agent/$(date +%Y%m%d-%H%M%S)" >> $GITHUB_OUTPUT
+      - run: git checkout -b "${{ steps.br.outputs.val }}"
+      - name: Write file (workflow_dispatch)
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: |
+          echo "${{ inputs.content_b64 }}" | base64 -d > "${{ inputs.path }}"
+          git add "${{ inputs.path }}"
+          git commit -m "${{ inputs.message }}"
+      - name: Write file (repository_dispatch)
+        if: ${{ github.event_name == 'repository_dispatch' }}
+        run: |
+          echo "${{ github.event.client_payload.content_b64 }}" | base64 -d > "${{ github.event.client_payload.path }}"
+          git add "${{ github.event.client_payload.path }}"
+          git commit -m "${{ github.event.client_payload.message }}"
+      - run: git push -u origin "${{ steps.br.outputs.val }}"
+      - name: Open PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr create --title "${{ github.event_name == 'workflow_dispatch' && inputs.message || github.event.client_payload.message }}" --body "Automated change via Apply File workflow" --base main --_
+# 0) Set your git identity (use your noreply if you want)
+git config --global user.name  "503fresh"
+git config --global user.email "503fresh@users.noreply.github.com"
+
+# 1) Ensure workflows dir exists
+New-Item -Force -ItemType Directory -Path .github\workflows | Out-Null
+
+# 2) Write Apply File workflow (single-quoted here-string)
+@'
+name: Apply File
+on:
+  repository_dispatch:
+    types: [apply-file]
+  workflow_dispatch:
+    inputs:
+      path:
+        description: Repo path to write
+        required: true
+        type: string
+      content_b64:
+        description: Base64 content
+        required: true
+        type: string
+      message:
+        description: Commit message
+        required: true
+        type: string
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: New branch
+        id: br
+        run: echo "val=agent/$(date +%Y%m%d-%H%M%S)" >> $GITHUB_OUTPUT
+      - run: git checkout -b "${{ steps.br.outputs.val }}"
+      - name: Write file (workflow_dispatch)
+        if: ${{ github.event_name == 'workflow_dispatch' }}
+        run: |
+          echo "${{ inputs.content_b64 }}" | base64 -d > "${{ inputs.path }}"
+          git add "${{ inputs.path }}"
+          git commit -m "${{ inputs.message }}"
+      - name: Write file (repository_dispatch)
+        if: ${{ github.event_name == 'repository_dispatch' }}
+        run: |
+          echo "${{ github.event.client_payload.content_b64 }}" | base64 -d > "${{ github.event.client_payload.path }}"
+          git add "${{ github.event.client_payload.path }}"
+          git commit -m "${{ github.event.client_payload.message }}"
+      - run: git push -u origin "${{ steps.br.outputs.val }}"
+      - name: Open PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr create --title "${{ github.event_name == 'workflow_dispatch' && inputs.message || github.event.client_payload.message }}" --body "Automated change via Apply File workflow" --base main --head "${{ steps.br.outputs.val }}"

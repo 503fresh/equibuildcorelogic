@@ -1,0 +1,35 @@
+﻿name: Troubleshoot
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Branch to troubleshoot
+        required: false
+        type: string
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.branch || 'main' }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+      - name: Install
+        run: npm ci || npm i
+      - name: Compile
+        run: npx hardhat compile || echo "::warning ::compile failed"
+      - name: Test
+        run: npx hardhat test || echo "::warning ::tests failed"
+      - name: Archive artifacts
+        if: always()
+        run: |
+          mkdir -p artifacts_out
+          cp -R artifacts artifacts_out/ 2>/dev/null || true
+          cp -R cache artifacts_out/ 2>/dev/null || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: troubleshoot-artifacts
+          path: artifacts_out
